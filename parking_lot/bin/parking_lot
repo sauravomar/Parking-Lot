@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# This variable contains absolute path of this `parking_lot` script
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+JAR_FILE="$DIR/../target/parking_lot-0.0.1-SNAPSHOT.jar"
+[ ! -f "$JAR_FILE" ] && echo " Please run $DIR/setup" && exit 1;
+
+
+if [ "$#"  -ne 1 ]
+then
+
+	echo "**** Will Take Input from console ****"
+
+	java -jar $DIR/../target/parking_lot-0.0.1-SNAPSHOT.jar;
+
+else
+	echo "**** Will Take Input from file $1 ****"
+
+	java -jar $DIR/../target/parking_lot-0.0.1-SNAPSHOT.jar $1;
+fi
+
+
